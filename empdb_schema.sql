@@ -1,0 +1,35 @@
+CREATE TABLE ACME_EMPLOYEE (
+ID          NUMERIC PRIMARY KEY,
+FIRST_NAME       VARCHAR(50),
+LAST_NAME        VARCHAR(50),
+START_DATE  DATE,
+AGE         NUMERIC,
+JOB_ID      NUMERIC,
+STATUS      VARCHAR(20));
+
+INSERT INTO ACMEUSER.ACME_EMPLOYEE VALUES(
+10,
+'JOHN',
+'DOE',
+'2016-01-01',
+30,
+1,
+'ACTIVE');
+
+INSERT INTO acmeuser.acme_employee values(
+20,
+'JANE',
+'DOE',
+'2015-10-01',
+33,
+2,
+'ACTIVE');
+
+INSERT INTO acmeuser.acme_employee values(
+30,
+'DUKE',
+'DOE',
+'1995-06-01',
+23,
+3,
+'ACTIVE'
