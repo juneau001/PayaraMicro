@@ -1,5 +1,5 @@
-# PayaraMicro
-Examples for use with Payara Micro
+# Payara Micro Examples
+Examples for use with Java Magazine article
 
 Dockerfile downloads Apache Derby client driver and sets environment variables for creating the data connection.
 
