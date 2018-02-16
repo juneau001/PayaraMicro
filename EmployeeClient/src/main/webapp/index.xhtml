@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <f:view>
+            <p:dialog id="updateDialog" widgetVar="updateDialog" modal="true" closable="false">
+                <p:graphicImage library="images" name="ajaxloading-bar.gif"/>
+            </p:dialog>
+            Hello from Facelets
+            <br />
+            <p:dataTable id="empTable" value="#{acmeEmployeeController.items}" var="emp">
+                <p:column headerText="First">
+                    <h:outputText value="#{emp.firstName}"/>
+                </p:column>
+                <p:column headerText="Last">
+                    <h:outputText value="#{emp.lastName}"/>
+                </p:column>
+                <p:column headerText="Date">
+                    <h:outputText value="#{emp.startDate}">
+                        <f:convertDateTime type="localDate" pattern="MM/dd/yyyy"/>
+                    </h:outputText>
+                </p:column>
+            </p:dataTable>
+            <br/>
+            <hr/>
+            <br/>
+            <h:form id="empForm">
+                <h:outputText id="returnMessage"
+                              value="#{acmeEmployeeController.returnMessage}"/>
+
+                <br/><br/>
+
+                <p:commandButton id="loadEmps" value="Create JSON"
+                                 update="returnMessage"
+                                 action="#{acmeEmployeeController.loadCustomersToJSON}"/>
+            </h:form>
+            <h:form id="empForm2">
+                <h:outputText id="returnMessage2"
+                              value="#{acmeEmployeeController.returnMessage2}"/>
+                <p:inputTextarea id="returnMessage" cols="20"
+                                 value="#{acmeEmployeeController.empJson}"/>
+
+                <br/><br/>
+
+                <p:commandButton id="loadEmps2" value="Create Object from JSON"
+                                 update="returnMessage2"
+                                 action="#{acmeEmployeeController.convertEmployee}"/>
+            </h:form>
+            <h:form id="empForm3">
+                <p:messages id="empMessage"/>
+                <br/><br/>
+                <p:panelGrid columns="2">
+                    <p:outputLabel for="firstName" value="First: "/>
+                    <p:inputText id="firstName"
+                                 value="#{acmeEmployeeController.selected.firstName}"/>
+
+                    <p:outputLabel for="lastName" value="Last: "/>
+                    <p:inputText id="lastName"
+                                 value="#{acmeEmployeeController.selected.lastName}"/>
+
+                    <p:outputLabel for="age" value="Age: "/>
+                    <p:spinner id="age" min="0" max="99"
+                               value="#{acmeEmployeeController.selected.age}"/>
+
+
+                    <p:outputLabel for="startDate" value="Start Date: "/>
+                    <p:inputText id="startDate"  
+                                 value="#{acmeEmployeeController.selected.startDate}">
+                        <f:convertDateTime type="localDate" pattern="MM/dd/yyyy"/>
+                    </p:inputText>
+
+
+                </p:panelGrid>
+                <br/><br/>
+
+                <p:commandButton id="loadEmps2" value="Create Object from JSON"
+                                 update="empMessage" 
+                                 onstart="PF('updateDialog').show();"
+                                 oncomplete="PF('updateDialog').hide();"
+                                 action="#{acmeEmployeeController.create}"/>
+            </h:form>
+
+        </f:view>
+    </h:body>
+
+</html>
+

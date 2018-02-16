@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+</head>
+
+
+<h:body>
+    <h2  id="title">Hello, please log in:</h2>
+    <form name="loginForm" method="POST" action="j_security_check">
+        <p><strong>Please type your user name: </strong>
+            <input id="username" type="text" name="j_username" size="25"/></p>
+        <p><strong>Please type your password: </strong>
+            <input id="password" type="password" size="15" name="j_password"/></p>
+        <p>
+            <input id="login" type="submit" value="Submit"/>
+            <input id="reset" type="reset" value="Reset"/></p>
+    </form>
+</h:body>
+</html>
